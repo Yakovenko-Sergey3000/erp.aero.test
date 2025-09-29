@@ -1,0 +1,12 @@
+services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_USER: ${MSQL_USER}
+      MYSQL_ROOT_PASSWORD: ${MSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MSQL_DATABASE}
+    ports:
+      - 3306:3306
+    volumes:
+      - ./sql-data:/var/lib/mysql
