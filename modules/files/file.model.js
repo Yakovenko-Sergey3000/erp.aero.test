@@ -9,7 +9,9 @@ class File {
     uploaded_at,
     path,
   } = {}) {
-    this.id = id;
+    if (id) {
+      this.id = id;
+    }
     this.user_id = user_id;
     this.name = name;
     this.extension = extension;
@@ -18,4 +20,8 @@ class File {
     this.uploaded_at = uploaded_at;
     this.path = path;
   }
+
+  static tableName = "files";
 }
+
+export default File;
