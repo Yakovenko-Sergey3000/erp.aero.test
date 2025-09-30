@@ -1,0 +1,401 @@
+{
+	"info": {
+		"_postman_id": "da6a0650-d449-41d5-a9c3-2722339a4e6f",
+		"name": "ERP.AERO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14916637"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "/signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-forwarded-for",
+								"value": "123.45.67.89",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"login\": \"test3@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/signin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-forwarded-for",
+								"value": "123.45.67.89",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"login\": \"test3@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/loguot",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzYmNjZmU4LTE3NDQtNDNiOC1hYWEzLWY5OTU2NzdjYzRmMiIsImlhdCI6MTc1OTI1OTQxNiwiZXhwIjoxNzU5MjYwMDE2fQ.Z9Wkz9WssuoJ2ZoDm_Bc1ZIN3KOTJW4vsSHIIDIT3rY",
+								"type": "text"
+							},
+							{
+								"key": "x-forwarded-for",
+								"value": "123.45.67.89",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzYmNjZmU4LTE3NDQtNDNiOC1hYWEzLWY5OTU2NzdjYzRmMiIsImlhdCI6MTc1OTI1OTQxNiwiZXhwIjoxNzU5MjYwMDE2fQ.Z9Wkz9WssuoJ2ZoDm_Bc1ZIN3KOTJW4vsSHIIDIT3rY",
+								"type": "text"
+							},
+							{
+								"key": "x-forwarded-for",
+								"value": "123.45.67.89",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/signup/new_token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-forwarded-for",
+								"value": "123.45.67.89",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZWIzOWQ1LWU4NzEtNDJmMC04MGE2LWIxOWVhM2NlMjg5MyIsImlhdCI6MTc1OTI1ODE4MywiZXhwIjoxNzU5ODYyOTgzfQ.xl-ZdVhb19zhMPlMMHanInDBaal2q1O25npvTB9q0oY\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/signup/new_token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"signup",
+								"new_token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "File",
+			"item": [
+				{
+					"name": "/file/upload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzYmNjZmU4LTE3NDQtNDNiOC1hYWEzLWY5OTU2NzdjYzRmMiIsImlhdCI6MTc1OTI2MTAzOSwiZXhwIjoxNzU5MjYxNjM5fQ.BJGp39kLG4XBH459EPATSzTvS7hBe24FYAtSY5x1jog",
+								"type": "text"
+							},
+							{
+								"key": "x-forwarded-for",
+								"value": "123.45.67.89",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/user/Documents/имя.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/file/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"file",
+								"upload"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/file/list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUwZDI4NjZjLTBiYjUtNDUxYi04MTQ0LWIxZTQ5ZTVhMzU1MiIsImlhdCI6MTc1OTIyOTkyOSwiZXhwIjoxNzU5MjMwNTI5fQ.KfgFTveiqzNfBIhd2qkVXbA4RzamW9ryP2WHKSlpvnk",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Beearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUwZDI4NjZjLTBiYjUtNDUxYi04MTQ0LWIxZTQ5ZTVhMzU1MiIsImlhdCI6MTc1OTIyOTUzNCwiZXhwIjoxNzU5MjMwMTM0fQ.EmkKfW8q9E8eBAOILrWZzqPuJShl6E3y36mLrO3UINk",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-forwarded-for",
+								"value": "123.45.67.89",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/file/list?page=1&list_size=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"file",
+								"list"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "list_size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/file/update/:id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzYmNjZmU4LTE3NDQtNDNiOC1hYWEzLWY5OTU2NzdjYzRmMiIsImlhdCI6MTc1OTI2MTAzOSwiZXhwIjoxNzU5MjYxNjM5fQ.BJGp39kLG4XBH459EPATSzTvS7hBe24FYAtSY5x1jog",
+								"type": "text"
+							},
+							{
+								"key": "x-forwarded-for",
+								"value": "123.45.67.89",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/user/Documents/capadokia.jpeg"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/file/update/20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"file",
+								"update",
+								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/file/delete/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Berear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzYmNjZmU4LTE3NDQtNDNiOC1hYWEzLWY5OTU2NzdjYzRmMiIsImlhdCI6MTc1OTI2MTAzOSwiZXhwIjoxNzU5MjYxNjM5fQ.BJGp39kLG4XBH459EPATSzTvS7hBe24FYAtSY5x1jog",
+								"type": "text"
+							},
+							{
+								"key": "x-forwarded-for",
+								"value": "123.45.67.89",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/file/delete/24",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"file",
+								"delete",
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/file/download/:id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUwZDI4NjZjLTBiYjUtNDUxYi04MTQ0LWIxZTQ5ZTVhMzU1MiIsImlhdCI6MTc1OTI0OTU0OCwiZXhwIjoxNzU5MjUwMTQ4fQ.y2fNXmVf6jDlqSy-UwS_i4eDl9F8B_B56bv2wWUzH1s",
+								"type": "text"
+							},
+							{
+								"key": "x-forwarded-for",
+								"value": "123.45.67.89",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/file/download/19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"file",
+								"download",
+								"19"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
