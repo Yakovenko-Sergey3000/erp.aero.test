@@ -1,17 +1,18 @@
 import jwt from "jsonwebtoken";
 import { JWT_ACCESS_SECRET } from "../configs/config.js";
+import ApiError from "../utils/api-error.js";
 
-export const isAuthenticated = async (req, res, next) => {
+export async function isAuthenticated(req, res, next) {
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
-    return res.status(401).send("Unauthorized");
+    return next(ApiError.UnauthorizedError());
   }
 
   const token = authHeader.split(" ")[1];
 
   if (!token) {
-    return res.status(401).send("Unauthorized");
+    return next(ApiError.UnauthorizedError());
   }
 
   try {
@@ -27,12 +28,11 @@ export const isAuthenticated = async (req, res, next) => {
     );
 
     if (!refreshToken) {
-      return res.status(401).send("Unauthorized");
+      return next(ApiError.UnauthorizedError());
     }
 
     next();
   } catch (e) {
-    console.log(e);
-    return res.status(401).send("Unauthorized");
+    next(ApiError.UnauthorizedError());
   }
-};
+}

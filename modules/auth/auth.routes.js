@@ -5,6 +5,7 @@ import {
   checkUserPhone,
 } from "../../utils/check-user-login.js";
 import { isAuthenticated } from "../../middlewars/auth.middleware.js";
+import ApiError from "../../utils/api-error.js";
 
 class AuthRoutes {
   /**
@@ -17,12 +18,12 @@ class AuthRoutes {
     this.router.post(
       "/signup",
       this._loginAndPassValidator,
-      this.signUp.bind(this),
+      this.signup.bind(this),
     );
     this.router.post(
       "/signin",
       this._loginAndPassValidator,
-      this.signIn.bind(this),
+      this.signin.bind(this),
     );
     this.router.post("/signup/new_token", this.newToken.bind(this));
     this.router.get("/logout", isAuthenticated, this.logout.bind(this));
@@ -31,7 +32,7 @@ class AuthRoutes {
     return this.router;
   }
 
-  async signIn(req, res) {
+  async signin(req, res, next) {
     try {
       const response = await this.authService.signin({
         login: req.body.login,
@@ -40,32 +41,36 @@ class AuthRoutes {
       });
 
       res.send(response).status(200);
-    } catch (error) {
-      res.send(error.message).status(400);
+    } catch (e) {
+      next(e);
     }
   }
-  async signUp(req, res) {
+  async signup(req, res, next) {
+    if (req.errors.length) {
+      return next(ApiError.BadRequest(null, req.errors));
+    }
+
     try {
-      const response = await this.authService.signup({
+      const json = await this.authService.signup({
         login: req.body.login,
         password: req.body.password,
         ip: req.ip,
       });
 
-      res.send(response).status(201);
-    } catch (error) {
-      res.send(error.message).status(400);
+      res.status(201).json(json);
+    } catch (e) {
+      next(e);
     }
   }
-  async logout(req, res) {
+  async logout(req, res, next) {
     try {
       await this.authService.logout({ userId: req.user.id, ip: req.ip });
-      res.send("Logout success").status(200);
-    } catch (error) {
-      res.send(error.message).status(400);
+      res.status(200).send("Logout success");
+    } catch (e) {
+      next(e);
     }
   }
-  async newToken(req, res) {
+  async newToken(req, res, next) {
     try {
       const response = await this.authService.newToken({
         refreshToken: req.body.refreshToken,
@@ -74,19 +79,19 @@ class AuthRoutes {
 
       res.send(response).status(200);
     } catch (e) {
-      res.send(e.message).status(400);
+      next(e);
     }
   }
 
-  getId(req, res) {
+  getId(req, res, next) {
     try {
       res
         .send({
           id: req.user.id,
         })
         .status(200);
-    } catch (error) {
-      res.send(error.message).status(400);
+    } catch (e) {
+      next(e);
     }
   }
 

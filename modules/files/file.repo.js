@@ -6,10 +6,10 @@ class FileRepository {
     this.db = db;
   }
 
-  createFile(file) {
+  async createFile(file) {
     const preparedFile = clearObject(file);
 
-    this.db.transaction(async (trx) => {
+    return this.db.transaction(async (trx) => {
       await trx(File.tableName).insert(preparedFile);
       const file = await trx(File.tableName).where(preparedFile).first();
       return new File(file);

@@ -18,7 +18,7 @@ class TokenRepository {
 
   async getTokenByUserId(userId, ip) {
     const token = await this.db(Token.tableName)
-      .where({ user_id: userId, ip })
+      .where({ user_id: userId, ip, is_broken: false })
       .orderBy("id", "desc")
       .first();
 
@@ -33,8 +33,8 @@ class TokenRepository {
     return token ? new Token(token) : token;
   }
 
-  markAsBroken(userId, ip) {
-    this.db(Token.tableName)
+  async markAsBroken(userId, ip) {
+    await this.db(Token.tableName)
       .where({ user_id: userId, ip })
       .update({ is_broken: true });
   }

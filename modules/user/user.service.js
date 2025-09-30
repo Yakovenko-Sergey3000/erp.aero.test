@@ -1,5 +1,6 @@
 import User from "./user.model.js";
 import { v4 as uuidv4 } from "uuid";
+import ApiError from "../../utils/api-error.js";
 
 class UserService {
   /**
@@ -22,20 +23,19 @@ class UserService {
       phone: user.phone,
     });
 
-    if (userExist.length) {
-      throw new Error("User already exist");
-    }
+    if (userExist.length) throw ApiError.UserAlreadyExists();
 
     return await this.userRepo.createUser(user);
   }
+
   findUserById(id) {
+    if (!id) throw ApiError.RequiredField("id");
     return this.userRepo.findUserById(id);
   }
 
   async findUsersWhere(query) {
     return await this.userRepo.findUsersWhere(query);
   }
-  findUserByEmail() {}
 }
 
 export default UserService;

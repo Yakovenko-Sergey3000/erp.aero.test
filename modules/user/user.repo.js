@@ -24,11 +24,10 @@ class UserRepository {
     return users.map((user) => new User(user));
   }
 
-  findUserById(id) {
-    return this.db(User.tableName).where({ id }).first();
-  }
-  findUserByEmail(email) {
-    return this.db(User.tableName).where({ email }).first();
+  async findUserById(id) {
+    const user = await this.db(User.tableName).where({ id }).first();
+
+    return user ? new User(user) : user;
   }
 }
 

@@ -1,4 +1,6 @@
-export const setTokenServiceMiddleware = (tokenService) => (req, res, next) => {
-  req.tokenService = tokenService;
-  next();
-};
+export function setTokenServiceMiddleware(tokenService) {
+  return (req, res, next) => {
+    req.tokenService = tokenService;
+    next();
+  };
+}

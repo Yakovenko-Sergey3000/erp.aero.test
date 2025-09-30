@@ -1,6 +1,7 @@
 import Token from "./token.model.js";
 import jwt from "jsonwebtoken";
 import { JWT_ACCESS_SECRET, JWT_REFRESH_SECRET } from "../../configs/config.js";
+import ApiError from "../../utils/api-error.js";
 
 class TokenService {
   /**
@@ -12,8 +13,8 @@ class TokenService {
   }
 
   async createToken({ user, ip }) {
-    if (!user) throw new Error("User is required");
-    if (!ip) throw new Error("IP is required");
+    if (!user) throw ApiError.RequiredField("user data");
+    if (!ip) throw ApiError.RequiredField("ip");
 
     const accessToken = jwt.sign({ id: user.id }, JWT_ACCESS_SECRET, {
       expiresIn: "10m",
@@ -38,44 +39,31 @@ class TokenService {
   }
 
   async refreshToken({ refreshToken, ip }) {
-    if (!refreshToken) throw new Error("refreshToken is required");
-    if (!ip) throw new Error("IP is required");
+    if (!refreshToken) throw ApiError.RequiredField("refreshToken");
+    if (!ip) throw ApiError.RequiredField("ip");
 
-    try {
-      const payload = jwt.verify(refreshToken, JWT_REFRESH_SECRET);
-      const token = await this.tokenRepo.getTokenByRefreshToken(
-        refreshToken,
-        ip,
-      );
+    const payload = jwt.verify(refreshToken, JWT_REFRESH_SECRET);
+    const token = await this.tokenRepo.getTokenByRefreshToken(refreshToken, ip);
 
-      if (!token || token.isBroken()) {
-        throw new Error("Token not valid");
-      }
-
-      return jwt.sign({ id: payload.id }, JWT_ACCESS_SECRET, {
-        expiresIn: "10m",
-      });
-    } catch (e) {
-      throw new Error(e);
+    if (!token || token.isBroken()) {
+      throw ApiError.TokenNotFound();
     }
+
+    return jwt.sign({ id: payload.id }, JWT_ACCESS_SECRET, {
+      expiresIn: "10m",
+    });
   }
 
   async getTokenByUserId(userId, ip) {
-    if (!userId) throw new Error("user_id is required");
-    if (!ip) throw new Error("ip is required");
+    if (!userId) throw ApiError.RequiredField("user_id");
+    if (!ip) throw ApiError.RequiredField("ip");
 
-    const token = await this.tokenRepo.getTokenByUserId(userId, ip);
-
-    if (token.isBroken()) {
-      return undefined;
-    }
-
-    return token;
+    return await this.tokenRepo.getTokenByUserId(userId, ip);
   }
 
   async markAsBroken({ userId, ip }) {
-    if (!userId) throw new Error("user_id is required");
-    if (!ip) throw new Error("ip is required");
+    if (!userId) throw ApiError.RequiredField("user_id");
+    if (!ip) throw ApiError.RequiredField("ip");
 
     await this.tokenRepo.markAsBroken(userId, ip);
   }

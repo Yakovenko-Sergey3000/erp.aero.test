@@ -1,15 +1,17 @@
+import ApiError from "../../utils/api-error.js";
+
 class User {
   constructor({ id, email, phone, password } = {}) {
     if (!id) {
-      throw new Error("id is required");
+      throw ApiError.RequiredField("id");
     }
 
     if (!password) {
-      throw new Error("password is required");
+      throw ApiError.RequiredField("password");
     }
 
     if (!email && !phone) {
-      throw new Error("email or phone is required");
+      throw ApiError.RequiredField("email or phone");
     }
 
     this.id = id;

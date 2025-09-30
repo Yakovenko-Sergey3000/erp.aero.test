@@ -1,3 +1,5 @@
+import ApiError from "../../utils/api-error.js";
+
 class Token {
   constructor({
     id,
@@ -7,9 +9,9 @@ class Token {
     is_broken = 0,
     expires_at,
   } = {}) {
-    if (!user_id) throw new Error("user_id is required");
-    if (!refresh_token) throw new Error("refresh_token is required");
-    if (!expires_at) throw new Error("expires_at is required");
+    if (!user_id) throw ApiError.RequiredField("user_id");
+    if (!refresh_token) throw ApiError.RequiredField("refresh_token");
+    if (!expires_at) throw ApiError.RequiredField("expires_at");
 
     if (id) {
       this.id = id;

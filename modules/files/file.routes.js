@@ -29,7 +29,7 @@ class FileRoutes {
     return this.router;
   }
 
-  async upload(req, res) {
+  async upload(req, res, next) {
     const { filename, mimetype, size, path } = req.file;
     try {
       await this.fileService.uploadFile({
@@ -41,14 +41,13 @@ class FileRoutes {
         size,
       });
 
-      res.send("OK").status(200);
+      res.status(200).send("OK");
     } catch (e) {
-      console.log(e);
-      return res.status(400).send(e);
+      next(e);
     }
   }
 
-  async list(req, res) {
+  async list(req, res, next) {
     const { page, list_size } = req.query;
 
     try {
@@ -57,13 +56,13 @@ class FileRoutes {
         limit: list_size,
       });
 
-      res.send(result).status(200);
+      res.status(200).json(result);
     } catch (e) {
-      res.status(400).send(e);
+      next(e);
     }
   }
 
-  async update(req, res) {
+  async update(req, res, next) {
     const { id } = req.params;
     const { filename, mimetype, size, path } = req.file;
 
@@ -78,32 +77,30 @@ class FileRoutes {
         size,
       });
 
-      res.send("OK").status(200);
+      res.status(200).send("OK");
     } catch (e) {
-      console.log(e);
-      return res.status(400).send(e);
+      next(e);
     }
   }
 
-  async delete(req, res) {
+  async delete(req, res, next) {
     const { id } = req.params;
 
     try {
       await this.fileService.deleteFile({ fileId: id });
       res.send("OK").status(200);
     } catch (e) {
-      res.status(400).send(e);
+      next(e);
     }
   }
 
-  async download(req, res) {
+  async download(req, res, next) {
     try {
       const file = await this.fileService.getById({ fileId: req.params.id });
 
       res.download(file.path, file.name);
     } catch (e) {
-      console.log(e);
-      res.status(400).send(e);
+      next(e);
     }
   }
 }

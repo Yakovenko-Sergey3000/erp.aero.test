@@ -1,4 +1,5 @@
 import File from "./file.model.js";
+import ApiError from "../../utils/api-error.js";
 
 class FileService {
   /**
@@ -11,11 +12,11 @@ class FileService {
   }
 
   async uploadFile({ userId, name, extension, mimeType, size, path } = {}) {
-    if (!userId) throw new Error("user id is required");
-    if (!name) throw new Error("name is required");
-    if (!mimeType) throw new Error("mime_type is required");
-    if (!size) throw new Error("size is required");
-    if (!path) throw new Error("path is required");
+    if (!userId) throw ApiError.RequiredField("userId");
+    if (!name) throw ApiError.RequiredField("name");
+    if (!mimeType) throw ApiError.RequiredField("mimeType");
+    if (!size) throw ApiError.RequiredField("size");
+    if (!path) throw ApiError.RequiredField("path");
 
     const file = new File({
       user_id: userId,
@@ -27,25 +28,15 @@ class FileService {
       path,
     });
 
-    try {
-      await this.fileRepo.createFile(file);
-    } catch (e) {
-      throw new Error(`Error uploading file: ${e}`);
-    }
+    await this.fileRepo.createFile(file);
   }
   async deleteFile({ fileId }) {
-    if (!fileId) throw new Error("fileId is required");
+    if (!fileId) ApiError.RequiredField("fileId");
 
-    const file = await this.fileRepo.getById({ fileId: fileId });
+    const file = await this.getById({ fileId: fileId });
 
-    if (!file) throw new Error(`File with ${fileId} does not exist`);
-
-    try {
-      await this.fileRepo.deleteFileById(file.id);
-      await this.fileUploader.deleteFile({ filePath: file.path });
-    } catch (e) {
-      throw new Error(`Error delete file: ${e}`);
-    }
+    await this.fileRepo.deleteFileById(file.id);
+    await this.fileUploader.deleteFile({ filePath: file.path });
   }
 
   async getAll({ offset, limit }) {
@@ -53,15 +44,13 @@ class FileService {
   }
 
   async getById({ fileId }) {
-    try {
-      const file = await this.fileRepo.getById(fileId);
+    if (!fileId) throw ApiError.RequiredField("fileId");
 
-      if (!file) throw new Error(`File with id ${fileId} does not exist`);
+    const file = await this.fileRepo.getById(fileId);
 
-      return file;
-    } catch (e) {
-      throw new Error(`Error getting file: ${e}`);
-    }
+    if (!file) throw ApiError.NotFound();
+
+    return file;
   }
 
   async updateFile({
@@ -73,27 +62,23 @@ class FileService {
     size,
     path,
   }) {
-    try {
-      if (!oldFileId) throw new Error("oldFileId is required");
+    if (!oldFileId) throw ApiError.RequiredField("oldFileId");
 
-      const replaceFile = await this.getById({ file_id: oldFileId });
+    const replaceFile = await this.getById({ fileId: oldFileId });
 
-      const newFile = new File({
-        id: replaceFile.id,
-        name,
-        extension,
-        user_id: userId,
-        mime_type: mimeType,
-        size,
-        path,
-        uploaded_at: new Date(),
-      });
+    const newFile = new File({
+      id: replaceFile.id,
+      name,
+      extension,
+      user_id: userId,
+      mime_type: mimeType,
+      size,
+      path,
+      uploaded_at: new Date(),
+    });
 
-      await this.fileRepo.updateFile(replaceFile.id, newFile);
-      await this.fileUploader.deleteFile({ filePath: replaceFile.path });
-    } catch (e) {
-      throw new Error(`Error updating file: ${e}`);
-    }
+    await this.fileRepo.updateFile(replaceFile.id, newFile);
+    await this.fileUploader.deleteFile({ filePath: replaceFile.path });
   }
 }
 

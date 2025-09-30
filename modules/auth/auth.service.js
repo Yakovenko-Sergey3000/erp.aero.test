@@ -3,6 +3,7 @@ import {
   checkUserEmail,
   checkUserPhone,
 } from "../../utils/check-user-login.js";
+import ApiError from "../../utils/api-error.js";
 
 class AuthService {
   /**
@@ -25,9 +26,9 @@ class AuthService {
   }
 
   async signup({ login, password, ip }) {
-    if (!login) throw new Error("Login is required");
-    if (!password) throw new Error("Password is required");
-    if (!ip) throw new Error("IP is required");
+    if (!login) throw ApiError.RequiredField("login");
+    if (!password) throw ApiError.RequiredField("password");
+    if (!ip) throw ApiError.RequiredField("ip");
 
     const hashPassword = await bycrypt.hashSync(password, 10);
 
@@ -37,6 +38,7 @@ class AuthService {
     };
 
     const createdUser = await this.userService.createUser(userData);
+
     return await this.tokenService.createToken({ user: createdUser, ip });
   }
 
@@ -46,7 +48,7 @@ class AuthService {
     });
 
     if (currentUser.length === 0) {
-      throw new Error("User not found");
+      throw ApiError.UserNotFound();
     }
     const matchPassword = await bycrypt.compare(
       password,
@@ -54,7 +56,7 @@ class AuthService {
     );
 
     if (!matchPassword) {
-      throw new Error("Invalid login or password");
+      throw ApiError.InvalidCredentials();
     }
 
     await this.tokenService.markAsBroken({ userId: currentUser[0].id, ip });
@@ -63,20 +65,23 @@ class AuthService {
   }
 
   async logout({ userId, ip }) {
+    if (!userId) throw ApiError.RequiredField("user id");
+    if (!ip) throw ApiError.RequiredField("ip");
+
     const user = await this.userService.findUserById(userId);
 
-    if (!user) throw new Error("User not found");
+    if (!user) throw ApiError.UserNotFound();
 
     const token = await this.tokenService.getTokenByUserId(user.id, ip);
 
-    if (!token) throw new Error("Token not found");
+    if (!token) throw ApiError.TokenNotFound();
 
     await this.tokenService.markAsBroken({ userId: user.id, ip });
   }
 
   async newToken({ refreshToken, ip }) {
-    if (!refreshToken) throw new Error("refreshToken is required");
-    if (!ip) throw new Error("IP is required");
+    if (!refreshToken) throw ApiError.RequiredField("refreshToken");
+    if (!ip) throw ApiError.RequiredField("ip");
 
     const newAccessToken = await this.tokenService.refreshToken({
       refreshToken,

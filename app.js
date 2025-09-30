@@ -14,6 +14,7 @@ import FileRoutes from "./modules/files/file.routes.js";
 import { isAuthenticated } from "./middlewars/auth.middleware.js";
 import FileUploader from "./libs/file-uploader.js";
 import { setTokenServiceMiddleware } from "./middlewars/set-token-service.middleware.js";
+import { errorMiddleware } from "./middlewars/error.middleware.js";
 
 const app = express();
 app.use(cookieParser());
@@ -45,5 +46,6 @@ app.use(
   isAuthenticated,
   new FileRoutes({ fileService, fileUploader }),
 );
+app.use(errorMiddleware);
 
 export default app;

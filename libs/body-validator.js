@@ -26,8 +26,9 @@ export const bodyValidator =
       }
     });
 
+    req.errors = [];
     if (errors.length) {
-      return res.status(400).json({ errors });
+      req.errors.push(...errors);
     }
 
     next();
