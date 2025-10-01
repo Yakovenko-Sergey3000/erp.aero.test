@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import { db } from "./configs/db.js";
 import AuthRoutes from "./modules/auth/auth.routes.js";
 import AuthService from "./modules/auth/auth.service.js";
@@ -19,6 +20,12 @@ import { errorMiddleware } from "./middlewars/error.middleware.js";
 const app = express();
 app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  }),
+);
 app.set("trust proxy", 1);
 
 const uploadsPath = "uploads";
