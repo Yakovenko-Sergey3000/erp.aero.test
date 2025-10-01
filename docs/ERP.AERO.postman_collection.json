@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"login\": \"test3@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"raw": "{\n    \"login\": \"test1@gmail.com\",\n    \"password\": \"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -56,7 +56,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"login\": \"test3@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"raw": "{\n    \"login\": \"test1@gmail.com\",\n    \"password\": \"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -184,7 +184,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzYmNjZmU4LTE3NDQtNDNiOC1hYWEzLWY5OTU2NzdjYzRmMiIsImlhdCI6MTc1OTI2MTAzOSwiZXhwIjoxNzU5MjYxNjM5fQ.BJGp39kLG4XBH459EPATSzTvS7hBe24FYAtSY5x1jog",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2YTFkZWYxLTQxOTItNDQzYy05YjBmLWZiYWVhNTU1NzdiMyIsImlhdCI6MTc1OTI5MTU0MCwiZXhwIjoxNzU5MjkyMTQwfQ.PEHCOKlMovniuo4k8ia22p0NtWPtgB-FWZDe68XeMB0",
 								"type": "text"
 							},
 							{
@@ -237,20 +237,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUwZDI4NjZjLTBiYjUtNDUxYi04MTQ0LWIxZTQ5ZTVhMzU1MiIsImlhdCI6MTc1OTIyOTkyOSwiZXhwIjoxNzU5MjMwNTI5fQ.KfgFTveiqzNfBIhd2qkVXbA4RzamW9ryP2WHKSlpvnk",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2YTFkZWYxLTQxOTItNDQzYy05YjBmLWZiYWVhNTU1NzdiMyIsImlhdCI6MTc1OTI5MTU0MCwiZXhwIjoxNzU5MjkyMTQwfQ.PEHCOKlMovniuo4k8ia22p0NtWPtgB-FWZDe68XeMB0",
 								"type": "text"
-							},
-							{
-								"key": "Authorization",
-								"value": "Beearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUwZDI4NjZjLTBiYjUtNDUxYi04MTQ0LWIxZTQ5ZTVhMzU1MiIsImlhdCI6MTc1OTIyOTUzNCwiZXhwIjoxNzU5MjMwMTM0fQ.EmkKfW8q9E8eBAOILrWZzqPuJShl6E3y36mLrO3UINk",
-								"type": "text",
-								"disabled": true
 							},
 							{
 								"key": "x-forwarded-for",
 								"value": "123.45.67.89",
-								"type": "text",
-								"disabled": true
+								"type": "text"
 							}
 						],
 						"url": {
@@ -285,7 +278,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzYmNjZmU4LTE3NDQtNDNiOC1hYWEzLWY5OTU2NzdjYzRmMiIsImlhdCI6MTc1OTI2MTAzOSwiZXhwIjoxNzU5MjYxNjM5fQ.BJGp39kLG4XBH459EPATSzTvS7hBe24FYAtSY5x1jog",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2YTFkZWYxLTQxOTItNDQzYy05YjBmLWZiYWVhNTU1NzdiMyIsImlhdCI6MTc1OTI5MTU0MCwiZXhwIjoxNzU5MjkyMTQwfQ.PEHCOKlMovniuo4k8ia22p0NtWPtgB-FWZDe68XeMB0",
 								"type": "text"
 							},
 							{
@@ -338,7 +331,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Berear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzYmNjZmU4LTE3NDQtNDNiOC1hYWEzLWY5OTU2NzdjYzRmMiIsImlhdCI6MTc1OTI2MTAzOSwiZXhwIjoxNzU5MjYxNjM5fQ.BJGp39kLG4XBH459EPATSzTvS7hBe24FYAtSY5x1jog",
+								"value": "Berear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2YTFkZWYxLTQxOTItNDQzYy05YjBmLWZiYWVhNTU1NzdiMyIsImlhdCI6MTc1OTI5MTU0MCwiZXhwIjoxNzU5MjkyMTQwfQ.PEHCOKlMovniuo4k8ia22p0NtWPtgB-FWZDe68XeMB0",
 								"type": "text"
 							},
 							{
@@ -370,7 +363,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUwZDI4NjZjLTBiYjUtNDUxYi04MTQ0LWIxZTQ5ZTVhMzU1MiIsImlhdCI6MTc1OTI0OTU0OCwiZXhwIjoxNzU5MjUwMTQ4fQ.y2fNXmVf6jDlqSy-UwS_i4eDl9F8B_B56bv2wWUzH1s",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2YTFkZWYxLTQxOTItNDQzYy05YjBmLWZiYWVhNTU1NzdiMyIsImlhdCI6MTc1OTI5MTU0MCwiZXhwIjoxNzU5MjkyMTQwfQ.PEHCOKlMovniuo4k8ia22p0NtWPtgB-FWZDe68XeMB0",
 								"type": "text"
 							},
 							{
@@ -390,6 +383,37 @@
 								"file",
 								"download",
 								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/file/:id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2YTFkZWYxLTQxOTItNDQzYy05YjBmLWZiYWVhNTU1NzdiMyIsImlhdCI6MTc1OTI5MTU0MCwiZXhwIjoxNzU5MjkyMTQwfQ.PEHCOKlMovniuo4k8ia22p0NtWPtgB-FWZDe68XeMB0",
+								"type": "text"
+							},
+							{
+								"key": "x-forwarded-for",
+								"value": "123.45.67.89",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/file/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"file",
+								"1"
 							]
 						}
 					},

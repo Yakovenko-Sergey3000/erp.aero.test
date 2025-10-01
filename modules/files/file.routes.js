@@ -17,7 +17,7 @@ class FileRoutes {
       this.upload.bind(this),
     );
     this.router.get("/list", this.list.bind(this));
-    this.router.get("/:id", (req, res) => {});
+    this.router.get("/:id", this.getById.bind(this));
     this.router.delete("/delete/:id", this.delete.bind(this));
     this.router.put(
       "/update/:id",
@@ -99,6 +99,15 @@ class FileRoutes {
       const file = await this.fileService.getById({ fileId: req.params.id });
 
       res.download(file.path, file.name);
+    } catch (e) {
+      next(e);
+    }
+  }
+
+  async getById(req, res, next) {
+    try {
+      const file = await this.fileService.getById({ fileId: req.params.id });
+      res.status(200).json(file);
     } catch (e) {
       next(e);
     }
