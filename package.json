@@ -8,24 +8,37 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "nodemon server.js",
-    "prettier": "prettier --write ."
+    "dev": "yarn migrate:latest && knex seed:run && nodemon server.ts",
+    "prettier": "prettier --write .",
+    "migrate:make": "knex migrate:make",
+    "migrate:up": "knex migrate:up",
+    "migrate:down": "knex migrate:rollback",
+    "migrate:latest": "knex migrate:latest"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.3",
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
     "bcrypt": "^6.0.0",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.2",
-    "mysql2": "^3.15.1",
-    "knex": "^3.1.0",
+    "express": "^4.16.3",
     "jsonwebtoken": "^9.0.2",
+    "knex": "^3.1.0",
     "multer": "^2.0.2",
-    "uuid": "^8.3.2",
-    "cors": "^2.8.5"
+    "pg": "^8.10.0",
+    "pino": "^8.0.6",
+    "pino-pretty": "^13.1.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.9",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.5.6",
     "nodemon": "^1.18.3",
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "ts-node": "^11.0.1",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.2.2"
   }
 }

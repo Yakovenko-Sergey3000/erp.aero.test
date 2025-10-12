@@ -1,5 +1,5 @@
 import File from "./file.model.js";
-import clearObject from "../../utils/clear-object.js";
+import cleanObject from "../../utils/clear-object.js";
 
 class FileRepository {
   constructor(db) {
@@ -7,7 +7,7 @@ class FileRepository {
   }
 
   async createFile(file) {
-    const preparedFile = clearObject(file);
+    const preparedFile = cleanObject(file);
 
     return this.db.transaction(async (trx) => {
       await trx(File.tableName).insert(preparedFile);

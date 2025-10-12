@@ -1,7 +1,13 @@
 import ApiError from "../../utils/api-error.js";
+import type { UUID } from "node:crypto";
 
 class User {
-  constructor({ id, email, phone, password } = {}) {
+  id: UUID;
+  email: string | undefined;
+  phone: string | undefined;
+  password: string;
+
+  constructor({ id, email, phone, password }: User) {
     if (!id) {
       throw ApiError.RequiredField("id");
     }

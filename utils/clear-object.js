@@ -1,4 +1,4 @@
-function clearObject(obj) {
+function cleanObject(obj) {
   return Object.entries(obj).reduce((acc, [key, val]) => {
     if (val) {
       acc[key] = val;
@@ -8,4 +8,4 @@ function clearObject(obj) {
   }, {});
 }
 
-export default clearObject;
+export default cleanObject;

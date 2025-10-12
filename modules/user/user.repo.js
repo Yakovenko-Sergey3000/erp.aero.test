@@ -1,5 +1,5 @@
-import User from "./user.model.js";
-import clearObject from "../../utils/clear-object.js";
+import User from "./user.model.ts";
+import cleanObject from "../../utils/clear-object.js";
 
 class UserRepository {
   constructor(db) {
@@ -7,7 +7,7 @@ class UserRepository {
   }
 
   async createUser(user) {
-    const preparedUser = clearObject(user);
+    const preparedUser = cleanObject(user);
 
     return this.db.transaction(async (trx) => {
       await trx(User.tableName).insert(preparedUser);
@@ -17,7 +17,7 @@ class UserRepository {
   }
 
   async findUsersWhere(query) {
-    const preparedQuery = clearObject(query);
+    const preparedQuery = cleanObject(query);
     const users = await this.db(User.tableName)
       .select("*")
       .where(preparedQuery);

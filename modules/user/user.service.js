@@ -1,4 +1,4 @@
-import User from "./user.model.js";
+import User from "./user.model.ts";
 import { v4 as uuidv4 } from "uuid";
 import ApiError from "../../utils/api-error.js";
 

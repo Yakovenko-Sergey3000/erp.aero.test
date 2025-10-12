@@ -1,4 +1,6 @@
-export async function up(knex) {
+import type { Knex } from "knex";
+
+export async function up(knex: Knex): Promise<void> {
   if (!(await knex.schema.hasTable("users"))) {
     await knex.schema.createTable("users", (table) => {
       table.uuid("id").primary();
@@ -18,6 +20,7 @@ export async function up(knex) {
         .inTable("users")
         .onDelete("CASCADE");
       table.string("refresh_token").notNullable().unique();
+      table.string("fingerprint").notNullable();
       table.boolean("is_broken").defaultTo(false);
       table.timestamp("expires_at").notNullable();
 
@@ -43,8 +46,8 @@ export async function up(knex) {
   }
 }
 
-export async function down(knex) {
-  await knex.schema.dropTableIfExists("users");
+export async function down(knex: Knex): Promise<void> {
   await knex.schema.dropTableIfExists("tokens");
   await knex.schema.dropTableIfExists("files");
+  await knex.schema.dropTableIfExists("users");
 }

@@ -3,3 +3,5 @@ node_modules
 sql-data
 .env
 uploads
+dist
+database

@@ -1,4 +1,4 @@
-import clearObject from "../../utils/clear-object.js";
+import cleanObject from "../../utils/clear-object.js";
 import Token from "./token.model.js";
 
 class TokenRepository {
@@ -7,7 +7,7 @@ class TokenRepository {
   }
 
   createToken(token) {
-    const preparedToken = clearObject(token);
+    const preparedToken = cleanObject(token);
 
     return this.db.transaction(async (trx) => {
       const [tokenId] = await trx(Token.tableName).insert(preparedToken);

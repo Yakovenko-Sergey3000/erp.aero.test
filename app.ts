@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { db } from "./configs/db.js";
+import { db } from "./configs/db.ts";
 import AuthRoutes from "./modules/auth/auth.routes.js";
 import AuthService from "./modules/auth/auth.service.js";
 import UserRepository from "./modules/user/user.repo.js";
@@ -46,13 +46,15 @@ const authService = new AuthService({
 
 app.use(setTokenServiceMiddleware(tokenService));
 
-app.use(`/${uploadsPath}`, express.static(uploadsPath));
-app.use("/", new AuthRoutes({ authService }));
-app.use(
-  "/file",
-  isAuthenticated,
-  new FileRoutes({ fileService, fileUploader }),
-);
+const authRoutes = new AuthRoutes({ authService });
+
+// app.use(`/${uploadsPath}`, express.static(uploadsPath));
+// app.use("/", authRoutes);
+// app.use(
+//   "/file",
+//   isAuthenticated,
+//   new FileRoutes({ fileService, fileUploader })
+// );
 app.use(errorMiddleware);
 
 export default app;

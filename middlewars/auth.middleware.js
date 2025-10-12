@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { JWT_ACCESS_SECRET } from "../configs/config.js";
+import { JWT_ACCESS_SECRET } from "../configs/config.ts";
 import ApiError from "../utils/api-error.js";
 
 export async function isAuthenticated(req, res, next) {
@@ -24,7 +24,7 @@ export async function isAuthenticated(req, res, next) {
 
     const refreshToken = await req.tokenService.getTokenByUserId(
       req.user.id,
-      req.ip,
+      req.ip
     );
 
     if (!refreshToken) {

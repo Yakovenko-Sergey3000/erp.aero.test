@@ -1,6 +1,6 @@
 import Token from "./token.model.js";
 import jwt from "jsonwebtoken";
-import { JWT_ACCESS_SECRET, JWT_REFRESH_SECRET } from "../../configs/config.js";
+import { JWT_ACCESS_SECRET, JWT_REFRESH_SECRET } from "../../configs/config.ts";
 import ApiError from "../../utils/api-error.js";
 
 class TokenService {
