@@ -1,7 +1,7 @@
 {
   "name": "erp.aero.test",
   "version": "1.0.0",
-  "description": "Save files REST API",
+  "description": "JWT auth REST API",
   "main": "/dist/server.js",
   "type": "module",
   "author": "Sergey Yakovenko",

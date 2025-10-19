@@ -15,14 +15,14 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "x-forwarded-for",
-								"value": "123.45.67.89",
+								"key": "x-fingerprint",
+								"value": "fingerprint-1234",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"login\": \"test1@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"raw": "{\n    \"login\": \"test3@gmail.com\",\n    \"password\": \"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -49,14 +49,14 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "x-forwarded-for",
-								"value": "123.45.67.89",
+								"key": "x-fingerprint",
+								"value": "fingerprint-1234",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"login\": \"test1@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"raw": "{\n    \"login\": \"test3@gmail.com\",\n    \"password\": \"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -84,12 +84,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzYmNjZmU4LTE3NDQtNDNiOC1hYWEzLWY5OTU2NzdjYzRmMiIsImlhdCI6MTc1OTI1OTQxNiwiZXhwIjoxNzU5MjYwMDE2fQ.Z9Wkz9WssuoJ2ZoDm_Bc1ZIN3KOTJW4vsSHIIDIT3rY",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTYwMjg1LWQ4NzItNGEzMi1hZWUxLTZlYmVjMGM0MTg4YSIsImlhdCI6MTc2MDg4MTExMywiZXhwIjoxNzYwODgxNzEzfQ.InzjA9KO3sKcYPEkUCp6st0ExIfLCgdt6-ty7uR1ctM",
 								"type": "text"
 							},
 							{
-								"key": "x-forwarded-for",
-								"value": "123.45.67.89",
+								"key": "x-fingerprint",
+								"value": "fingerprint-1234",
 								"type": "text"
 							}
 						],
@@ -114,12 +114,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzYmNjZmU4LTE3NDQtNDNiOC1hYWEzLWY5OTU2NzdjYzRmMiIsImlhdCI6MTc1OTI1OTQxNiwiZXhwIjoxNzU5MjYwMDE2fQ.Z9Wkz9WssuoJ2ZoDm_Bc1ZIN3KOTJW4vsSHIIDIT3rY",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTYwMjg1LWQ4NzItNGEzMi1hZWUxLTZlYmVjMGM0MTg4YSIsImVtYWlsIjoidGVzdDNAZ21haWwuY29tIiwicGhvbmUiOm51bGwsImlhdCI6MTc2MDg4MjA3MSwiZXhwIjoxNzYwODgyNjcxfQ.NtgJx7cUFI8QcELudvJLQmGhmOD0h0gU4sclHcoMwQs",
 								"type": "text"
 							},
 							{
-								"key": "x-forwarded-for",
-								"value": "123.45.67.89",
+								"key": "x-fingerprint",
+								"value": "fingerprint-1234",
 								"type": "text"
 							}
 						],
@@ -143,14 +143,14 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "x-forwarded-for",
-								"value": "123.45.67.89",
+								"key": "x-fingerprint",
+								"value": "fingerprint-1234",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg0ZWIzOWQ1LWU4NzEtNDJmMC04MGE2LWIxOWVhM2NlMjg5MyIsImlhdCI6MTc1OTI1ODE4MywiZXhwIjoxNzU5ODYyOTgzfQ.xl-ZdVhb19zhMPlMMHanInDBaal2q1O25npvTB9q0oY\"\n}",
+							"raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTYwMjg1LWQ4NzItNGEzMi1hZWUxLTZlYmVjMGM0MTg4YSIsImlhdCI6MTc2MDg4MTQxMiwiZXhwIjoxNzYxNDg2MjEyfQ.nQCz3E0XYVhRbM75jMwb0dL2hYyldVMBc5wkChvJ1gg\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -158,7 +158,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/signup/new_token",
+							"raw": "http://localhost:8080/signup/new-token",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -166,254 +166,7 @@
 							"port": "8080",
 							"path": [
 								"signup",
-								"new_token"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "File",
-			"item": [
-				{
-					"name": "/file/upload",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2YTFkZWYxLTQxOTItNDQzYy05YjBmLWZiYWVhNTU1NzdiMyIsImlhdCI6MTc1OTI5MTU0MCwiZXhwIjoxNzU5MjkyMTQwfQ.PEHCOKlMovniuo4k8ia22p0NtWPtgB-FWZDe68XeMB0",
-								"type": "text"
-							},
-							{
-								"key": "x-forwarded-for",
-								"value": "123.45.67.89",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "multipart/form-data",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "file",
-									"type": "file",
-									"src": "/Users/user/Documents/имя.png"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:8080/file/upload",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"file",
-								"upload"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": null,
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/file/list",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2YTFkZWYxLTQxOTItNDQzYy05YjBmLWZiYWVhNTU1NzdiMyIsImlhdCI6MTc1OTI5MTU0MCwiZXhwIjoxNzU5MjkyMTQwfQ.PEHCOKlMovniuo4k8ia22p0NtWPtgB-FWZDe68XeMB0",
-								"type": "text"
-							},
-							{
-								"key": "x-forwarded-for",
-								"value": "123.45.67.89",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/file/list?page=1&list_size=10",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"file",
-								"list"
-							],
-							"query": [
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "list_size",
-									"value": "10"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/file/update/:id",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2YTFkZWYxLTQxOTItNDQzYy05YjBmLWZiYWVhNTU1NzdiMyIsImlhdCI6MTc1OTI5MTU0MCwiZXhwIjoxNzU5MjkyMTQwfQ.PEHCOKlMovniuo4k8ia22p0NtWPtgB-FWZDe68XeMB0",
-								"type": "text"
-							},
-							{
-								"key": "x-forwarded-for",
-								"value": "123.45.67.89",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "multipart/form-data",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "file",
-									"type": "file",
-									"src": "/Users/user/Documents/capadokia.jpeg"
-								},
-								{
-									"key": "",
-									"value": "",
-									"type": "text",
-									"disabled": true
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:8080/file/update/20",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"file",
-								"update",
-								"20"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/file/delete/:id",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Berear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2YTFkZWYxLTQxOTItNDQzYy05YjBmLWZiYWVhNTU1NzdiMyIsImlhdCI6MTc1OTI5MTU0MCwiZXhwIjoxNzU5MjkyMTQwfQ.PEHCOKlMovniuo4k8ia22p0NtWPtgB-FWZDe68XeMB0",
-								"type": "text"
-							},
-							{
-								"key": "x-forwarded-for",
-								"value": "123.45.67.89",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/file/delete/24",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"file",
-								"delete",
-								"24"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/file/download/:id",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2YTFkZWYxLTQxOTItNDQzYy05YjBmLWZiYWVhNTU1NzdiMyIsImlhdCI6MTc1OTI5MTU0MCwiZXhwIjoxNzU5MjkyMTQwfQ.PEHCOKlMovniuo4k8ia22p0NtWPtgB-FWZDe68XeMB0",
-								"type": "text"
-							},
-							{
-								"key": "x-forwarded-for",
-								"value": "123.45.67.89",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/file/download/19",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"file",
-								"download",
-								"19"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/file/:id",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2YTFkZWYxLTQxOTItNDQzYy05YjBmLWZiYWVhNTU1NzdiMyIsImlhdCI6MTc1OTI5MTU0MCwiZXhwIjoxNzU5MjkyMTQwfQ.PEHCOKlMovniuo4k8ia22p0NtWPtgB-FWZDe68XeMB0",
-								"type": "text"
-							},
-							{
-								"key": "x-forwarded-for",
-								"value": "123.45.67.89",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:8080/file/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"file",
-								"1"
+								"new-token"
 							]
 						}
 					},
