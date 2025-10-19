@@ -2,7 +2,7 @@
   "name": "erp.aero.test",
   "version": "1.0.0",
   "description": "Save files REST API",
-  "main": "server.js",
+  "main": "/dist/server.js",
   "type": "module",
   "author": "Sergey Yakovenko",
   "license": "MIT",
