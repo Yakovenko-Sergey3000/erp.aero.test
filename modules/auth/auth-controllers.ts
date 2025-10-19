@@ -1,4 +1,4 @@
-import type AuthService from "./auth.service.ts";
+import type AuthService from "./auth-service.ts";
 import type { Request, Response } from "express";
 import { BadRequest, UserNotFound } from "../../errors/index.ts";
 

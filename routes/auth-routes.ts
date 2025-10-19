@@ -1,9 +1,9 @@
 import { Router } from "express";
-import type AuthControllers from "../modules/auth/auth.controllers.ts";
+import type AuthControllers from "../modules/auth/auth-controllers.ts";
 import { catchAsync } from "../utils/catch-async.ts";
-import { bodyValidatorMiddleware } from "../middlewars/body-validator.middleware.ts";
+import { bodyValidatorMiddleware } from "../middlewars/body-validator-middleware.ts";
 import { checkUserEmail, checkUserPhone } from "../utils/check-user-login.ts";
-import { isAuthenticated } from "../middlewars/auth.middleware.ts";
+import { isAuthenticated } from "../middlewars/auth-middleware.ts";
 const router = Router();
 
 export function AuthRouter({

@@ -1,6 +1,6 @@
 import pino from "pino";
 import type { UUIDTypes } from "uuid";
-import type TokenService from "./modules/token/token.service.ts";
+import type TokenService from "./modules/token/token-service.ts";
 
 declare global {
   var logger: ReturnType<typeof pino>;

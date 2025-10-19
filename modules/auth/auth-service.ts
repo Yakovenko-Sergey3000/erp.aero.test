@@ -3,10 +3,10 @@ import {
   checkUserEmail,
   checkUserPhone,
 } from "../../utils/check-user-login.ts";
-import type TokenService from "../token/token.service.ts";
-import type UserService from "../user/user.service.ts";
+import type TokenService from "../token/token-service.ts";
+import type UserService from "../user/user-service.ts";
 import type { AuthDto, LogoutDto, NewTokenDto } from "./types.ts";
-import type { CreateUserModel } from "../user/user.model.ts";
+import type { CreateUserModel } from "../user/user-model.ts";
 import {
   InvalidCredentials,
   SomethingWentWrong,

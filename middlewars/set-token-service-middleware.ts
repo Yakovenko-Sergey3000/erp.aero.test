@@ -1,4 +1,4 @@
-import type TokenService from "../modules/token/token.service.ts";
+import type TokenService from "../modules/token/token-service.ts";
 import type { NextFunction, Request, Response } from "express";
 
 export function setTokenServiceMiddleware(tokenService: TokenService) {

@@ -1,5 +1,5 @@
 import { type Knex } from "knex";
-import type { UserModel } from "../modules/user/user.model.ts";
+import type { UserModel } from "../modules/user/user-model.ts";
 
 export async function seed(knex: Knex) {
   const users: UserModel[] = [

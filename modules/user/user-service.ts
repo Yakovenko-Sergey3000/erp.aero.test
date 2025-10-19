@@ -1,7 +1,7 @@
-import User, { type CreateUserModel, type UserModel } from "./user.model.ts";
+import User, { type CreateUserModel, type UserModel } from "./user-model.ts";
 import { type UUIDTypes, v4 as uuidv4 } from "uuid";
 import ApiError from "../../errors/api-error.ts";
-import type UserRepository from "./user.repo.ts";
+import type UserRepository from "./user-repo.ts";
 import { UserAlreadyExist } from "../../errors/index.ts";
 import type { FindUserQueryType } from "./types.ts";
 

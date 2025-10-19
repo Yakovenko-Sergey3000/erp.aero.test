@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
 import { JWT_ACCESS_SECRET, JWT_REFRESH_SECRET } from "../../configs/config.ts";
-import type TokenRepository from "./token.repo.ts";
-import { type UserModel } from "../user/user.model.ts";
-import Token from "./token.model.ts";
+import type TokenRepository from "./token-repo.ts";
+import { type UserModel } from "../user/user-model.ts";
+import Token from "./token-model.ts";
 import type {
   GetTokenByRefreshToken,
   GetTokenByUser,

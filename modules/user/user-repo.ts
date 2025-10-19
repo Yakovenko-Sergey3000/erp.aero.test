@@ -1,4 +1,4 @@
-import User, { type CreateUserModel, type UserModel } from "./user.model.ts";
+import User, { type CreateUserModel, type UserModel } from "./user-model.ts";
 import cleanObject from "../../utils/clear-object.ts";
 import type { Knex } from "knex";
 import { SomethingWentWrong } from "../../errors/index.ts";

@@ -1,5 +1,5 @@
 import cleanObject from "../../utils/clear-object.ts";
-import Token, { type CreateTokenModel } from "./token.model.ts";
+import Token, { type CreateTokenModel } from "./token-model.ts";
 import type { Knex } from "knex";
 import type {
   GetTokenByRefreshToken,
