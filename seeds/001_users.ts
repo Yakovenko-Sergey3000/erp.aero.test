@@ -1,8 +1,8 @@
 import { type Knex } from "knex";
-import User from "../modules/user/user.model.ts";
+import type { UserModel } from "../modules/user/user.model.ts";
 
 export async function seed(knex: Knex) {
-  const users: User[] = [
+  const users: UserModel[] = [
     {
       id: "00000000-0000-0000-0000-000000000001",
       email: "alice@example.com",
@@ -23,7 +23,7 @@ export async function seed(knex: Knex) {
     },
   ];
 
-  await knex<User>("users")
+  await knex<UserModel>("users")
     .whereIn(
       "email",
       users.map((u) => u.email),

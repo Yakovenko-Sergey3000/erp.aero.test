@@ -1,29 +1,34 @@
-import ApiError from "../../utils/api-error.js";
-import type { UUID } from "node:crypto";
+import type { UUIDTypes } from "uuid";
+
+export type UserModel = {
+  id: UUIDTypes;
+  email: string | undefined;
+  phone: string | undefined;
+  password: string;
+};
+
+export type CreateUserModel = Omit<UserModel, "id">;
 
 class User {
-  id: UUID;
+  id: UUIDTypes;
   email: string | undefined;
   phone: string | undefined;
   password: string;
 
-  constructor({ id, email, phone, password }: User) {
-    if (!id) {
-      throw ApiError.RequiredField("id");
+  constructor(user: UserModel | CreateUserModel) {
+    if ("id" in user) {
+      this.id = user.id;
+    } else {
+      this.id = "";
     }
 
-    if (!password) {
-      throw ApiError.RequiredField("password");
-    }
+    this.email = user.email;
+    this.phone = user.phone;
+    this.password = user.password;
+  }
 
-    if (!email && !phone) {
-      throw ApiError.RequiredField("email or phone");
-    }
-
-    this.id = id;
-    this.email = email;
-    this.phone = phone;
-    this.password = password;
+  isValid(): boolean {
+    return Boolean((this.email || this.phone) && this.password);
   }
 
   static tableName = "users";

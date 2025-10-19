@@ -1,7 +1,28 @@
-export const bodyValidator =
-  ({ required = [], validate = [] } = {}) =>
-  (req, res, next) => {
-    const errors = [];
+import type { NextFunction, Request, Response } from "express";
+
+type ValidateType = {
+  field: string;
+  message?: string;
+  validateFn?: (value: string) => boolean;
+};
+
+type RequiredObjectType = {
+  field: string;
+  message: string;
+};
+
+type RequiredType = string | RequiredObjectType;
+
+export const bodyValidatorMiddleware =
+  ({
+    required = [],
+    validate = [],
+  }: {
+    required: RequiredType[];
+    validate: ValidateType[];
+  }) =>
+  (req: Request, _: Response, next: NextFunction) => {
+    const errors: string[] = [];
 
     required.forEach((field) => {
       if (typeof field === "string") {

@@ -1,5 +1,5 @@
 import File from "./file.model.js";
-import ApiError from "../../utils/api-error.js";
+import ApiError from "../../errors/api-error.ts";
 
 class FileService {
   /**

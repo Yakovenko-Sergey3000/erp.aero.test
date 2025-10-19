@@ -1,5 +1,5 @@
 import File from "./file.model.js";
-import cleanObject from "../../utils/clear-object.js";
+import cleanObject from "../../utils/clear-object.ts";
 
 class FileRepository {
   constructor(db) {

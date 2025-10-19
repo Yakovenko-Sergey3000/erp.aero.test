@@ -9,6 +9,7 @@
   "private": false,
   "scripts": {
     "dev": "yarn migrate:latest && knex seed:run && nodemon server.ts",
+    "build": "tsc",
     "prettier": "prettier --write .",
     "migrate:make": "knex migrate:make",
     "migrate:up": "knex migrate:up",
@@ -28,12 +29,14 @@
     "pg": "^8.10.0",
     "pino": "^8.0.6",
     "pino-pretty": "^13.1.2",
-    "uuid": "^8.3.2"
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/cookie-parser": "^1.4.9",
     "@types/cors": "^2.8.19",
     "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^20.5.6",
     "nodemon": "^1.18.3",
     "prettier": "^3.6.2",
